@@ -13,5 +13,7 @@ namespace EduBond
         public string Name { get; set; }
         public string Email { get; set; }
         public int YearOfStudy { get; set; }
+        public List<int> SubjectProficiency { get; set; }
+
     }
 }

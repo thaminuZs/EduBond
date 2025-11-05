@@ -1,0 +1,2 @@
+CREATE TABLE student_reg (reg_no VARCHAR(20) PRIMARY KEY, password VARCHAR(30), name VARCHAR(50), email VARCHAR(50), study_yr INT(4));
+CREATE TABLE subject_prof_secondyr (reg_no VARCHAR(20), visualp INT(4), cgraphics INT(4), dsa INT(4), se INT(4), webprog INT(4), FOREIGN KEY (reg_no) REFERENCES student_reg(reg_no));

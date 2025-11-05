@@ -9,5 +9,8 @@ namespace EduBond
     internal interface IOperations
     {
         bool AddStudent(Student student);
+        bool IsRegistered(string regNo);
+        bool IsValidPassword(string regNo, string passw);
+        List<int> FetchLevels(string regNo);
     }
 }

@@ -17,11 +17,6 @@ namespace EduBond
             InitializeComponent();
         }
 
-        private void LoginForm_Load(object sender, EventArgs e)
-        {
-            label3.Hide();
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             foreach (Control c in this.Controls)
@@ -34,6 +29,32 @@ namespace EduBond
         }
 
         private void button1_Click(object sender, EventArgs e)
+        {
+            IOperations ops = Operations.Instance;
+            string regNo = textBox1.Text.Trim().ToLower();
+            string passw = textBox2.Text.Trim();
+
+            if(ops.IsRegistered(regNo))
+            {
+                if(ops.IsValidPassword(regNo, passw))
+                {
+                    new StudentDash(regNo).Show();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid Password");
+                    this.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Not Registered");
+                this.Close();
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
         {
             this.Close();
         }

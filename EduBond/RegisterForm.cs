@@ -65,16 +65,29 @@ namespace EduBond
         {
             var student = new Student
             {
-                RegNo = textBox1.Text.Trim(),
+                RegNo = textBox1.Text.Trim().ToLower(),
                 Password = textBox4.Text.Trim(),
                 Name = textBox2.Text.Trim(),
                 Email = textBox3.Text.Trim(),
-                YearOfStudy = comboBox1.SelectedIndex == 0 ? 1 : comboBox1.SelectedIndex == 1 ? 2 : comboBox1.SelectedIndex == 2 ? 3 : 4
+                YearOfStudy = comboBox1.SelectedIndex == 0 ? 1 : comboBox1.SelectedIndex == 1 ? 2 : comboBox1.SelectedIndex == 2 ? 3 : 4,
+                SubjectProficiency = new List<int>
+                    {
+                        trackBar1.Value,
+                        trackBar2.Value,
+                        trackBar3.Value,
+                        trackBar4.Value,
+                        trackBar5.Value
+                    }
             };
 
             IOperations ops = Operations.Instance;
             ops.AddStudent(student);
             MessageBox.Show("Success");
+            this.Close();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
             this.Close();
         }
     }
