@@ -153,5 +153,100 @@ namespace EduBond
             }
             return levelList;
         }
+
+        public bool SendMessage(string regNo,  string msg)
+        {
+            const string sendMsgQuery = "INSERT INTO messages (reg_no, message, msg_time) VALUES (@reg_no, @message, @time)";
+            using (var conn = _dbConnector.GetConnection())
+            {
+                using (var cmd = new MySqlCommand(sendMsgQuery, conn))
+                {
+                    cmd.Parameters.AddWithValue("@reg_no", regNo);
+                    cmd.Parameters.AddWithValue("@message", msg);
+                    cmd.Parameters.Add("@time", MySqlDbType.Datetime).Value = DateTime.Now;
+
+                    try
+                    {
+                        conn.Open();
+                        if (cmd.ExecuteNonQuery() > 0)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }catch { }
+                }
+            }
+            return false;
+        }
+
+        public List<Message> FetchMessages()
+        {
+            var levelList = new List<Message>();
+            const string msgQuery = "SELECT * FROM messages";
+
+            using (var conn = _dbConnector.GetConnection())
+            {
+                using (var cmd = new MySqlCommand(msgQuery, conn))
+                {
+                    try
+                    {
+                        conn.Open();
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    var msg = new Message()
+                                    {
+                                        RegNo = reader["reg_no"].ToString(),
+                                        MessageText = reader["message"].ToString(),
+                                        MessageTime = Convert.ToDateTime(reader["msg_time"])
+                                    };
+                                    levelList.Add(msg);
+                                }
+                            }
+                        }
+                    }
+                    catch { }
+                }
+            }
+            return levelList;
+        }
+
+        public bool ScheduleKuppi(Kuppi kuppi)
+        {
+            const string kuppiQuery = "INSERT INTO kuppi (subject, time_slot, instructor, description, link) VALUES (@subject, @time_slot, @instructor, @description, @link)";
+
+            using (var conn = _dbConnector.GetConnection())
+            {
+                using (var cmd = new MySqlCommand(kuppiQuery, conn))
+                {
+                    cmd.Parameters.AddWithValue("@subject", kuppi.Subject);
+                    cmd.Parameters.Add("@time_slot", MySqlDbType.Datetime).Value = kuppi.TimeSlot;
+                    cmd.Parameters.AddWithValue("@instructor", kuppi.Instructor);
+                    cmd.Parameters.AddWithValue("@description", kuppi.Description);
+                    cmd.Parameters.AddWithValue("@link", kuppi.Link);
+
+                    try
+                    {
+                        conn.Open();
+                        if (cmd.ExecuteNonQuery() > 0)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                    catch { }
+                }
+            }
+            return false;
+        }
     }
 }

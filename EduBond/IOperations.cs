@@ -12,5 +12,8 @@ namespace EduBond
         bool IsRegistered(string regNo);
         bool IsValidPassword(string regNo, string passw);
         List<int> FetchLevels(string regNo);
+        bool SendMessage(string regNo, string message);
+        List<Message> FetchMessages();
+        bool ScheduleKuppi(Kuppi kuppi);
     }
 }

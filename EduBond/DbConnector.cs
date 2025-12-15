@@ -10,7 +10,7 @@ namespace EduBond
 {
     internal class DbConnector
     {
-        const string connString = "Server=localhost;Database=edubond;Uid=root;Pwd=sql2289";
+        const string connString = "Server=localhost;Database=edubond;Uid=root";
         private DbConnector() {}
 
         private static DbConnector _instance;
