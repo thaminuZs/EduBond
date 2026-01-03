@@ -91,6 +91,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.LightCyan;
             this.groupBox1.Controls.Add(this.trackBar5);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.trackBar4);
@@ -191,7 +192,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.SystemColors.Info;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(71, 29);
             this.label6.Name = "label6";
@@ -242,22 +243,24 @@
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.PaleGreen;
             this.button1.Location = new System.Drawing.Point(170, 368);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(103, 38);
             this.button1.TabIndex = 10;
             this.button1.Text = "Submit";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.Color.PaleGreen;
             this.button2.Location = new System.Drawing.Point(43, 368);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(103, 38);
             this.button2.TabIndex = 11;
             this.button2.Text = "Clear";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // textBox4
@@ -280,18 +283,20 @@
             // 
             // button3
             // 
+            this.button3.BackColor = System.Drawing.Color.PaleGreen;
             this.button3.Location = new System.Drawing.Point(298, 368);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(103, 38);
             this.button3.TabIndex = 14;
             this.button3.Text = "Close";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.PeachPuff;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label11);
